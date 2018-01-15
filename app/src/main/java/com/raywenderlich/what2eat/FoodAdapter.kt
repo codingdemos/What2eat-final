@@ -53,7 +53,7 @@ class FoodAdapter(val context: Context, val foodTitle: Array<String>, val foodIm
   override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
     holder.title.text = foodTitle[position]
     holder.image.setImageResource(foodImages[position])
-    holder.layout.setOnClickListener(View.OnClickListener { view ->
+    holder.layout.setOnClickListener(View.OnClickListener { _ ->
       val mIntent = Intent(context,FoodDetailActivity::class.java)
       mIntent.putExtra("title", foodTitle[position])
       mIntent.putExtra("image", foodImages[position])

@@ -85,14 +85,14 @@ class MainActivity : AppCompatActivity() {
     val alertDialog = AlertDialog.Builder(this).create()
     alertDialog.setMessage("Are you sure you want to exit ${resources.getString(R.string.app_name)}")
     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.label_ok),
-        { dialogInterface, i ->
+        { _, _ ->
           val intent = Intent(Intent.ACTION_MAIN)
           intent.addCategory(Intent.CATEGORY_HOME)
           intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
           startActivity(intent)
         })
     alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.label_no),
-        { dialogInterface, i ->
+        { dialogInterface, _ ->
           dialogInterface.dismiss()
         })
     alertDialog.show()
