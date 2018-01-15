@@ -45,9 +45,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  var mFoodName = arrayOf("Banana", "Cheese", "Chocolate cookie", "Chocolate chip cookie",
+  var foodName = arrayOf("Banana", "Cheese", "Chocolate cookie", "Chocolate chip cookie",
       "Cupcake", "Pancakes")
-  var mFoodImage = intArrayOf(R.drawable.food_banana, R.drawable.food_cheese,
+  var foodImage = intArrayOf(R.drawable.food_banana, R.drawable.food_cheese,
       R.drawable.food_cookie_chocolate, R.drawable.food_cookie_chocolatechip,
       R.drawable.food_cupcake, R.drawable.food_pancakes)
 
@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity() {
     setSupportActionBar(toolbar)
     toolbar.inflateMenu(R.menu.menu_toolbar)
     toolbar.title = resources.getString(R.string.app_name)
-    val mLayoutManger = LinearLayoutManager(this,
+    val layoutManger = LinearLayoutManager(this,
         LinearLayoutManager.VERTICAL, false)
-    recyclerView.layoutManager = mLayoutManger
-    recyclerView.adapter = FoodAdapter(this, mFoodName, mFoodImage)
+    recyclerView.layoutManager = layoutManger
+    recyclerView.adapter = FoodAdapter(this, foodName, foodImage)
     TapTargetView.showFor(this, TapTarget.forToolbarOverflow(toolbar,
         getString(R.string.label_app_settings), getString(R.string.description_app_setting))
         .cancelable(false).tintTarget(true), object : TapTargetView.Listener() {
@@ -82,22 +82,22 @@ class MainActivity : AppCompatActivity() {
   }
 
   override fun onBackPressed() {
-    val mAlertDialog = AlertDialog.Builder(this).create()
-    mAlertDialog.setMessage("Are you sure you want to exit ${resources.getString(R.string.app_name)}")
-    mAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.label_ok),
+    val alertDialog = AlertDialog.Builder(this).create()
+    alertDialog.setMessage("Are you sure you want to exit ${resources.getString(R.string.app_name)}")
+    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.label_ok),
         { dialogInterface, i ->
-          val mIntent = Intent(Intent.ACTION_MAIN)
-          mIntent.addCategory(Intent.CATEGORY_HOME)
-          mIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-          startActivity(mIntent)
+          val intent = Intent(Intent.ACTION_MAIN)
+          intent.addCategory(Intent.CATEGORY_HOME)
+          intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+          startActivity(intent)
         })
-    mAlertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.label_no),
+    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.label_no),
         { dialogInterface, i ->
           dialogInterface.dismiss()
         })
-    mAlertDialog.show()
-    TapTargetView.showFor(mAlertDialog,
-        TapTarget.forView(mAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE),
+    alertDialog.show()
+    TapTargetView.showFor(alertDialog,
+        TapTarget.forView(alertDialog.getButton(DialogInterface.BUTTON_POSITIVE),
             getString(R.string.label_exit_app),
             getString(R.string.description_exit))
             .cancelable(false).tintTarget(false), object : TapTargetView.Listener() {

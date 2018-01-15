@@ -34,15 +34,15 @@ import android.content.Context
 
 class Util {
 
-  fun storeTutorialStatus(mContext: Context, show: Boolean) {
-    val mPreferences = mContext.getSharedPreferences("showTutorial", Context.MODE_PRIVATE)
-    val mEditor = mPreferences.edit()
-    mEditor.putBoolean("show", show)
-    mEditor.apply()
+  fun storeTutorialStatus(context: Context, show: Boolean) {
+    val preferences = context.getSharedPreferences("showTutorial", Context.MODE_PRIVATE)
+    val editor = preferences.edit()
+    editor.putBoolean("show", show)
+    editor.apply()
   }
 
-  fun getTutorialStatus(mContext: Context): Boolean {
-    val mPreferences = mContext.getSharedPreferences("showTutorial", Context.MODE_PRIVATE)
-    return mPreferences.getBoolean("show", true)
+  fun getTutorialStatus(context: Context): Boolean {
+    val preferences = context.getSharedPreferences("showTutorial", Context.MODE_PRIVATE)
+    return preferences.getBoolean("show", true)
   }
 }

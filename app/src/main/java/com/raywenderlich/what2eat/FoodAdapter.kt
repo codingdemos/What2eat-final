@@ -41,7 +41,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import kotlinx.android.synthetic.main.recyclerview_food_row.view.*
 
-class FoodAdapter(val mContext: Context, val mFoodTitle: Array<String>, val mFoodImages: IntArray) :
+class FoodAdapter(val context: Context, val foodTitle: Array<String>, val foodImages: IntArray) :
     RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
@@ -51,23 +51,23 @@ class FoodAdapter(val mContext: Context, val mFoodTitle: Array<String>, val mFoo
   }
 
   override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-    holder.mTitle.text = mFoodTitle[position]
-    holder.mImage.setImageResource(mFoodImages[position])
-    holder.mLayout.setOnClickListener(View.OnClickListener { view ->
-      val mIntent = Intent(mContext,FoodDetailActivity::class.java)
-      mIntent.putExtra("title", mFoodTitle[position])
-      mIntent.putExtra("image", mFoodImages[position])
-      mContext.startActivity(mIntent)
+    holder.title.text = foodTitle[position]
+    holder.image.setImageResource(foodImages[position])
+    holder.layout.setOnClickListener(View.OnClickListener { view ->
+      val mIntent = Intent(context,FoodDetailActivity::class.java)
+      mIntent.putExtra("title", foodTitle[position])
+      mIntent.putExtra("image", foodImages[position])
+      context.startActivity(mIntent)
     })
   }
 
   override fun getItemCount(): Int {
-    return mFoodTitle.size
+    return foodTitle.size
   }
 
   class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val mTitle: TextView = itemView.tvFoodName
-    val mImage: ImageView = itemView.ivFood
-    val mLayout: RelativeLayout = itemView.layout
+    val title: TextView = itemView.tvFoodName
+    val image: ImageView = itemView.ivFood
+    val layout: RelativeLayout = itemView.layout
   }
 }

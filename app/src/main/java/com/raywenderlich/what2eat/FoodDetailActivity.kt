@@ -48,25 +48,25 @@ class FoodDetailActivity : AppCompatActivity() {
 
     toolbar.title = intent.getStringExtra("title")
     toolbar.setNavigationOnClickListener(View.OnClickListener { view ->
-      val mIntent = Intent(this, MainActivity::class.java)
+      val intent = Intent(this, MainActivity::class.java)
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-      startActivity(mIntent)
+      startActivity(intent)
     })
     foodImage.setImageResource(intent.getIntExtra("image", R.drawable.food_banana))
 
-    val mIntent = Intent()
+    val intent = Intent()
     btnShare.setOnClickListener(View.OnClickListener { view ->
-      mIntent.action = Intent.ACTION_SEND
-      mIntent.putExtra(Intent.EXTRA_TEXT, "I'm eating ${toolbar.title}")
-      mIntent.type = "text/plain"
-      startActivity(Intent.createChooser(mIntent, getString(R.string.label_sendto)))
+      intent.action = Intent.ACTION_SEND
+      intent.putExtra(Intent.EXTRA_TEXT, "I'm eating ${toolbar.title}")
+      intent.type = "text/plain"
+      startActivity(Intent.createChooser(intent, getString(R.string.label_sendto)))
     })
 
     btnStore.setOnClickListener(View.OnClickListener { view ->
-      mIntent.action = Intent.ACTION_VIEW
-      mIntent.data = Uri.parse("https://www.freshdirect.com/index.jsp")
-      startActivity(mIntent)
+      intent.action = Intent.ACTION_VIEW
+      intent.data = Uri.parse("https://www.freshdirect.com/index.jsp")
+      startActivity(intent)
     })
 
     if(Util().getTutorialStatus(this)) {
