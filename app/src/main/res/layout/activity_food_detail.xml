@@ -22,9 +22,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
+      android:contentDescription="@string/description_picture_of_food"
       android:src="@drawable/food_banana" />
 
   <LinearLayout
+      style="?android:attr/buttonBarStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
@@ -32,6 +34,7 @@
 
     <Button
         android:id="@+id/btnShare"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -39,11 +42,11 @@
 
     <Button
         android:id="@+id/btnStore"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/button_label_visit_store" />
-
 
   </LinearLayout>
 </LinearLayout>

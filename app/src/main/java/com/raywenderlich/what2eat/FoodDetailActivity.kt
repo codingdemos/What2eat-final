@@ -34,7 +34,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.Toast
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
@@ -47,7 +46,7 @@ class FoodDetailActivity : AppCompatActivity() {
     setContentView(R.layout.activity_food_detail)
 
     toolbar.title = intent.getStringExtra("title")
-    toolbar.setNavigationOnClickListener(View.OnClickListener { _ ->
+    toolbar.setNavigationOnClickListener({ _ ->
       val intent = Intent(this, MainActivity::class.java)
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -56,14 +55,14 @@ class FoodDetailActivity : AppCompatActivity() {
     foodImage.setImageResource(intent.getIntExtra("image", R.drawable.food_banana))
 
     val intent = Intent()
-    btnShare.setOnClickListener(View.OnClickListener { _ ->
+    btnShare.setOnClickListener({ _ ->
       intent.action = Intent.ACTION_SEND
       intent.putExtra(Intent.EXTRA_TEXT, "I'm eating ${toolbar.title}")
       intent.type = "text/plain"
-      startActivity(Intent.createChooser(intent, getString(R.string.label_sendto)))
+      startActivity(Intent.createChooser(intent, getString(R.string.label_send_to)))
     })
 
-    btnStore.setOnClickListener(View.OnClickListener { _ ->
+    btnStore.setOnClickListener({ _ ->
       intent.action = Intent.ACTION_VIEW
       intent.data = Uri.parse("https://www.freshdirect.com/index.jsp")
       startActivity(intent)

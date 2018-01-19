@@ -45,9 +45,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  var foodName = arrayOf("Banana", "Cheese", "Chocolate cookie", "Chocolate chip cookie",
+  private var foodName = arrayOf("Banana", "Cheese", "Chocolate cookie", "Chocolate chip cookie",
       "Cupcake", "Pancakes")
-  var foodImage = intArrayOf(R.drawable.food_banana, R.drawable.food_cheese,
+  private var foodImage = intArrayOf(R.drawable.food_banana, R.drawable.food_cheese,
       R.drawable.food_cookie_chocolate, R.drawable.food_cookie_chocolatechip,
       R.drawable.food_cupcake, R.drawable.food_pancakes)
 

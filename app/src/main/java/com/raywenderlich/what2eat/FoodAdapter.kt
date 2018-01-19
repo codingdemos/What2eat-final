@@ -41,7 +41,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import kotlinx.android.synthetic.main.recyclerview_food_row.view.*
 
-class FoodAdapter(val context: Context, val foodTitle: Array<String>, val foodImages: IntArray) :
+class FoodAdapter(private val context: Context, private val foodTitle: Array<String>,
+                  private val foodImages: IntArray) :
     RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
@@ -53,7 +54,7 @@ class FoodAdapter(val context: Context, val foodTitle: Array<String>, val foodIm
   override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
     holder.title.text = foodTitle[position]
     holder.image.setImageResource(foodImages[position])
-    holder.layout.setOnClickListener(View.OnClickListener { _ ->
+    holder.layout.setOnClickListener({ _ ->
       val mIntent = Intent(context,FoodDetailActivity::class.java)
       mIntent.putExtra("title", foodTitle[position])
       mIntent.putExtra("image", foodImages[position])
